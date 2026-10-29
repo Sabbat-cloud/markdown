@@ -1,0 +1,6 @@
+/instance
+/venv
+*.bak
+hash_generator-systemd.py
+error.txt
+READMEV2.md

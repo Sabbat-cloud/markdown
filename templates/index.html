@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf-token" content="{{ csrf }}"><title>Sabbat · Markdown</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github-dark.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.min.js"></script>
+<script defer src="{{ url_for('static', filename='app.js') }}"></script></head>
+<body><aside><h1>Sabbat<span>MARKDOWN STUDIO</span></h1><button id="new">＋ Nuevo documento</button>
+<label>Buscar archivos<input id="filter" type="search" placeholder="Nombre del archivo…"></label>
+<div class="row"><button id="refresh">Actualizar</button><button id="archive">Papelera / versiones</button></div>
+<nav id="files" aria-label="Documentos"></nav><small>Markdown · .md / .markdown<br>Máximo 2 MiB por documento</small></aside>
+<main><header><div><span id="current">Documento nuevo</span><small id="saved">Sin guardar</small></div>
+<div class="row"><button id="save" class="primary">Guardar · Ctrl+S</button><button id="saveas">Guardar como</button>
+<button id="rename">Renombrar</button><button id="delete" class="danger">Borrar</button></div></header>
+<div class="toolbar" aria-label="Formato Markdown"><button data-wrap="**">Negrita</button><button data-wrap="*">Cursiva</button>
+<button data-prefix="## ">Título</button><button data-prefix="- ">Lista</button><button data-prefix="- [ ] ">Tarea</button>
+<button data-prefix="> ">Cita</button><button id="code">Código</button><button id="link">Enlace</button>
+<button id="table">Tabla</button><button id="math">Fórmula</button><button id="diagram">Diagrama</button></div>
+<div class="toolbar"><label class="import">Importar<input id="import" type="file" accept=".md,.markdown,text/markdown,text/plain"></label>
+<button id="download">Descargar .md</button><button id="print">Imprimir / PDF</button><button id="find-toggle">Buscar / reemplazar</button>
+<label>Vista <select id="view"><option value="split">Dividida</option><option value="edit">Solo texto</option><option value="preview">Solo lectura</option></select></label>
+<button id="theme">Claro / oscuro</button><button id="draft">Recuperar borrador</button></div>
+<div id="findbar" class="toolbar" hidden><input id="needle" placeholder="Buscar texto" aria-label="Buscar texto"><input id="replacement" placeholder="Reemplazar por" aria-label="Reemplazo">
+<button id="find">Siguiente</button><button id="replace">Reemplazar selección</button><button id="replace-all">Reemplazar todos</button><small>Coincidencia literal, distingue mayúsculas</small></div>
+<div id="panes" class="split"><section id="source-pane"><h2>ORIGINAL MARKDOWN</h2><textarea id="source" spellcheck="false" aria-label="Editor de Markdown" placeholder="# Empieza a escribir…"></textarea></section>
+<section id="preview-pane"><h2>VISTA PREVIA <span id="render-state"></span></h2><article id="preview"></article></section></div>
+<footer><span id="stats">0 palabras</span><span id="status" role="status" aria-live="polite">Listo</span></footer></main>
+<dialog id="archive-dialog"><h2>Papelera y versiones anteriores</h2><p>Restaurar crea un archivo; nunca sobrescribe otro. Las copias se conservan en el servidor.</p><button id="close-archive">Cerrar</button><div id="archive-list"></div></dialog>
+</body></html>
